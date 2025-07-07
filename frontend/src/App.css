@@ -1,38 +1,220 @@
+/* YouTube Clone Styles */
 .App {
-    text-align: center;
+    font-family: "YouTube Sans", "Roboto", sans-serif;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Dark mode styles */
+.dark {
+    background-color: #0f0f0f;
+    color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+.light {
+    background-color: #ffffff;
+    color: #0f0f0f;
+}
+
+/* Custom scrollbar for dark mode */
+.dark::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark::-webkit-scrollbar-track {
+    background: #202020;
+}
+
+.dark::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/* Light mode scrollbar */
+.light::-webkit-scrollbar {
+    width: 8px;
+}
+
+.light::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.light::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.light::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Focus states */
+button:focus,
+input:focus {
+    outline: none;
+}
+
+/* Hover effects */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* YouTube red color */
+.youtube-red {
+    background-color: #ff0000;
+}
+
+.youtube-red:hover {
+    background-color: #cc0000;
+}
+
+/* Custom button styles */
+.btn-subscribe {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-subscribe:hover {
+    background-color: #cc0000;
+}
+
+/* Video grid responsive */
+@media (max-width: 640px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+@media (min-width: 641px) and (max-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1281px) {
+    .video-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Sidebar animations */
+.sidebar-enter {
+    transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.sidebar-exit {
+    transform: translateX(0);
+}
+
+.sidebar-exit-active {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+/* Loading animation */
+.loading {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Video player aspect ratio */
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+/* Thumbnail hover effect */
+.thumbnail-hover:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
+/* Search bar focus */
+.search-input:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 1px #1976d2;
+}
+
+/* Category pills */
+.category-pill {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.category-pill:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.category-pill.active {
+    background-color: #0f0f0f;
     color: white;
 }
 
-.App-link {
-    color: #61dafb;
+.dark .category-pill {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.dark .category-pill:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .category-pill.active {
+    background-color: white;
+    color: #0f0f0f;
 }
